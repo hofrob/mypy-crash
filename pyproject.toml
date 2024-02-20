@@ -1,0 +1,44 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+]
+
+[tool.setuptools]
+py-modules = []
+
+[project]
+name = "mypy_crash"
+version = "1.0"
+readme = "README.md"
+authors = [
+    {name = "Robert Hofer", email = "github.ls9wp@o.hofrob.dev"},
+]
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "flask",
+    "flask-sqlalchemy",
+    "pip-tools",
+    "psycopg2",
+    "pydantic",
+    "pydantic-settings",
+    "sqlalchemy-utils",
+    "mypy",
+    "sqlalchemy[mypy]<2,>=1.4.46",
+    "types-flask-sqlalchemy",
+    "types-mypy-extensions",
+    "types-psycopg2",
+    "types-sqlalchemy",
+    "types-sqlalchemy-utils",
+]
+
+[tool.mypy]
+files = ["mypy_crash/"]
+plugins = ["sqlalchemy.ext.mypy.plugin"]
+warn_return_any = true
+show_error_codes = true
+python_version = 3.12
